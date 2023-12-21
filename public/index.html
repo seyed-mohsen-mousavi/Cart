@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Store</title>
+    <link rel="stylesheet" href="./build/tailwind.css" />
+    <link rel="stylesheet" href="../src/css/s.css" />
+</head>
+
+<body class="h-screen scroll-smooth">
+    <section class="container bg-slate-400 pb-5 rounded-b-lg pt-2  ">
+        <div class="absolute z-50 " id="mouse-out">
+            <button class="group/cart bg-white p-2 rounded-lg hover:bg-slate-400 transition-colors relative" id="cart">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" data-slot="icon" class="w-6 h-6 group-hover/cart:text-white">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                </svg>
+                <span class="absolute w-4 h-4 bg-green-300 rounded-full text-xs text-center font-semibold text-white "
+                    id="total_item_number">0</span>
+            </button>
+            <div class="container hidden mx-auto w-full  items-center justify-center  flex-col  scroll-smooth"
+                id="cart-items">
+                <ul class="flex flex-col bg-gray-300 p-5 rounded " id="list-itemCart">
+                </ul>
+                <p class=" rounded p-2 absolute bottom-[-5px] right-5 left-6  text-white font-semibold " id="price">0
+                </p>
+                <button id="btn"
+                    class="overflow-hidden absolute right-0 -bottom-6 w-20 p-2 h-10 bg-gray-200 text-black border-none rounded-md text-sm font-bold cursor-pointer  z-10 group">
+                    Buy 🛒
+                    <span
+                        class="absolute w-36 h-32 -top-8 -left-2 bg-white rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-500 duration-1000 origin-left"></span>
+                    <span
+                        class="absolute w-36 h-32 -top-8 -left-2 bg-green-300 rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-700 duration-700 origin-left"></span>
+                    <span
+                        class="absolute w-36 h-32 -top-8 -left-2 bg-green-400  rotate-12 transform scale-x-0 group-hover:scale-x-50 transition-transform group-hover:duration-1000 duration-500 origin-left"></span>
+                    <span
+                        class="group-hover:opacity-100 group-hover:duration-1000 duration-100 opacity-0 absolute top-2.5 left-3 z-10 text-white">Let's
+                        Go!</span>
+                </button>
+            </div>
+        </div>
+        <div class="m-5 ml-14 flex justify-between " >
+            <h1 class="text-2xl lg:text-3xl text-white font-medium">All Items</h1>
+            <div class="flex mr-5">
+                <button id="all"
+                    class="text-white text-sm md:text-xl lg:text-xl xl:text-xl 2xl:text-xl 3xl:text-xl pl-4 transition-all font-semibold">All</button>
+                <button id="pants"
+                    class="text-white text-sm md:text-xl lg:text-xl xl:text-xl 2xl:text-xl 3xl:text-xl pl-4 transition-all font-semibold">Pants</button>
+                <button id="shirt"
+                    class="text-white text-sm md:text-xl lg:text-xl xl:text-xl 2xl:text-xl 3xl:text-xl pl-4 transition-all font-semibold">Ti-Shirt</button>
+            </div>
+        </div>
+        <div id="Items" class="grid gap-4 grid-cols-2 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 ">
+        </div>
+    </section>
+
+    <script src="../src/js/script.js"></script>
+</body>
+
+</html>
