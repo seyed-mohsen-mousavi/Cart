@@ -82,9 +82,9 @@ const protact = [
 document.body.style.backgroundImage = "url(../src/img/pants.webp)";
 function createAllElements() {
   items.innerHTML = "";
-  allItems.classList.add("text-green-400");
-  pantFilter.classList.remove("text-green-400");
-  shirtFilter.classList.remove("text-green-400");
+  allItems.style.color = "rgb(74 222 128 / var(--tw-text-opacity))";
+  pantFilter.style.color = "white";
+  shirtFilter.style.color = "white";
   protact.forEach((item) => {
     items.insertAdjacentHTML(
       "beforeend",
@@ -105,12 +105,14 @@ function createAllElements() {
         `</p>
             </div>
             <div>
-                <button onclick="addItemHanler(` +
+            <div class="flex flex-col gap-2 m-5">
+            <button onclick="addItemHanler(` +
         item.id +
-        `)"
-                    class="text-white text-sm md:text-md lg:text-md xl:text-md 2xl:text-lg font-semibold bg-green-400 py-1 px-1 md:py-2 md:px-4 xl:py-2 xl:px-4 lg:py-2 lg:px-4 rounded-lg shadow-md hover:shadow-lg transition duration-500 transform-gpu hover:scale-110">
-                    Buy Now
-                </button>
+        `)" class="text-white text-sm md:text-md lg:text-md xl:text-md 2xl:text-lg font-semibold bg-green-400 py-1 px-1 md:py-2 md:px-4 xl:py-2 xl:px-4 lg:py-2 lg:px-4 rounded-lg shadow-md hover:shadow-lg transition duration-500 transform-gpu hover:scale-110">Buy Now</button>
+                    <button onclick="showDataProduct(` +
+        item.id +
+        `)" class="text-white text-sm md:text-md lg:text-md xl:text-md 2xl:text-lg font-semibold bg-slate-300 py-1 px-1 md:py-2 md:px-4 xl:py-2 xl:px-4 lg:py-2 lg:px-4 rounded-lg shadow-md hover:shadow-lg transition duration-500 transform-gpu hover:scale-110">More Data</button>
+              </div>
             </div>
         </div>
         </div>`
@@ -173,7 +175,7 @@ if (listItemCart.innerHTML != "") {
   document.getElementById("price").classList.add("hidden");
 }
 // log my Name
-console.log("Mr.R00T");
+console.warn("Mr.R00T");
 // ------
 
 // Filter and SeItems localStorage
@@ -182,9 +184,9 @@ shirtFilter.addEventListener("click", createShirtFilter);
 allItems.addEventListener("click", createAllElements);
 function createShirtFilter() {
   let shirt = [];
-  pantFilter.classList.remove("text-green-400");
-  shirtFilter.classList.add("text-green-400");
-  allItems.classList.remove("text-green-400");
+  shirtFilter.style.color = "rgb(74 222 128 / var(--tw-text-opacity))";
+  pantFilter.style.color = "white";
+  allItems.style.color = "white";
   protact.forEach(function (e) {
     if (e.shirt) {
       shirt.push(e);
@@ -199,7 +201,7 @@ function createShirtFilter() {
         class="container mx-auto p-7 bg-white max-w-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl animate-delay-[` +
         item.id * 100 +
         `ms] animate-fade-down">
-        <div class="md:w-72 lg:w-64 xl:w-72 w-50 h-56  md:h-64 lg:h-64 bg-cover bg-center hover:bg-top transition-all rounded-xl mr-auto ml-auto" style="background-image: url(` +
+        <div  class="md:w-72 lg:w-64 xl:w-72 w-50 h-56  md:h-64 lg:h-64 bg-cover bg-center hover:bg-top transition-all rounded-xl mr-auto ml-auto" style="background-image: url(` +
         item.img +
         `)"></div>
         <div class="flex justify-between items-center">
@@ -212,12 +214,14 @@ function createShirtFilter() {
         `</p>
             </div>
             <div>
-                <button onclick="addItemHanler(` +
+            <div class="flex flex-col gap-2 m-5">
+            <button onclick="addItemHanler(` +
         item.id +
-        `)"
-                    class="text-white text-sm md:text-md lg:text-md xl:text-md 2xl:text-lg font-semibold bg-green-400 py-1 px-1 md:py-2 md:px-4 xl:py-2 xl:px-4 lg:py-2 lg:px-4 rounded-lg shadow-md hover:shadow-lg transition duration-500 transform-gpu hover:scale-110">
-                    Buy Now
-                </button>
+        `)" class="text-white text-sm md:text-md lg:text-md xl:text-md 2xl:text-lg font-semibold bg-green-400 py-1 px-1 md:py-2 md:px-4 xl:py-2 xl:px-4 lg:py-2 lg:px-4 rounded-lg shadow-md hover:shadow-lg transition duration-500 transform-gpu hover:scale-110">Buy Now</button>
+                    <button onclick="showDataProduct(` +
+        item.id +
+        `)" class="text-white text-sm md:text-md lg:text-md xl:text-md 2xl:text-lg font-semibold bg-slate-300 py-1 px-1 md:py-2 md:px-4 xl:py-2 xl:px-4 lg:py-2 lg:px-4 rounded-lg shadow-md hover:shadow-lg transition duration-500 transform-gpu hover:scale-110">More Data</button>
+              </div>
             </div>
         </div>
         </div>`
@@ -228,9 +232,9 @@ function createShirtFilter() {
 }
 function createPantsFilter() {
   let pants = [];
-  pantFilter.classList.add("text-green-400");
-  shirtFilter.classList.remove("text-green-400");
-  allItems.classList.remove("text-green-400");
+  pantFilter.style.color = "rgb(74 222 128 / var(--tw-text-opacity))";
+  shirtFilter.style.color = "white";
+  allItems.style.color = "white";
   let x = protact.forEach(function (e) {
     if (e.pant) {
       pants.push(e);
@@ -243,8 +247,8 @@ function createPantsFilter() {
       `<div
         class="container mx-auto p-7 bg-white max-w-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl animate-delay-[` +
         item.id * 100 +
-        `ms] animate-fade-left">
-        <div class="md:w-72 lg:w-64 xl:w-72 w-50 h-56  md:h-64 lg:h-64 bg-cover bg-center hover:bg-top transition-all rounded-xl mr-auto ml-auto" style="background-image: url(` +
+        `ms] animate-fade-down">
+        <div  class="md:w-72 lg:w-64 xl:w-72 w-50 h-56  md:h-64 lg:h-64 bg-cover bg-center hover:bg-top transition-all rounded-xl mr-auto ml-auto" style="background-image: url(` +
         item.img +
         `)"></div>
         <div class="flex justify-between items-center">
@@ -257,12 +261,14 @@ function createPantsFilter() {
         `</p>
             </div>
             <div>
-                <button onclick="addItemHanler(` +
+            <div class="flex flex-col gap-2 m-5">
+            <button onclick="addItemHanler(` +
         item.id +
-        `)"
-                    class="text-white text-sm md:text-md lg:text-md xl:text-md 2xl:text-lg font-semibold bg-green-400 py-1 px-1 md:py-2 md:px-4 xl:py-2 xl:px-4 lg:py-2 lg:px-4 rounded-lg shadow-md hover:shadow-lg transition duration-500 transform-gpu hover:scale-110">
-                    Buy Now
-                </button>
+        `)" class="text-white text-sm md:text-md lg:text-md xl:text-md 2xl:text-lg font-semibold bg-green-400 py-1 px-1 md:py-2 md:px-4 xl:py-2 xl:px-4 lg:py-2 lg:px-4 rounded-lg shadow-md hover:shadow-lg transition duration-500 transform-gpu hover:scale-110">Buy Now</button>
+                    <button onclick="showDataProduct(` +
+        item.id +
+        `)" class="text-white text-sm md:text-md lg:text-md xl:text-md 2xl:text-lg font-semibold bg-slate-300 py-1 px-1 md:py-2 md:px-4 xl:py-2 xl:px-4 lg:py-2 lg:px-4 rounded-lg shadow-md hover:shadow-lg transition duration-500 transform-gpu hover:scale-110">More Data</button>
+              </div>
             </div>
         </div>
         </div>`
@@ -282,3 +288,9 @@ window.addEventListener("load", () => {
     createAllElements();
   }
 });
+
+function showDataProduct(e) {
+  console.log(e);
+  let sum = "/E:/Cart/public/product.html?" + "id=" + e;
+  location.href = sum;
+}
