@@ -9,7 +9,7 @@ const itemNumber = document.getElementById("total_item_number");
 const pantFilter = document.getElementById("pants");
 const shirtFilter = document.getElementById("shirt");
 const allItems = document.getElementById("all");
-// animation Cart And Hover : 
+// animation Cart And Hover :
 cart.addEventListener("mouseover", () => {
   cartItems.classList.add("animate-fade-left");
   cartItems.classList.remove("animate-jump-out");
@@ -51,43 +51,48 @@ const protact = [
   },
   {
     id: 5,
-    name: "Ti-Shirt 2",
+    name: "Polo Shirt",
     price: "15.99",
-    img: "../src/img/Ti-Shirt-02.avif",
+    img: "../src/img/Polo-Shirt.jpeg",
     shirt: true,
   },
   {
     id: 6,
-    name: "Pants",
+    name: "Jordan pants",
     price: "50.99",
-    img: "../src/img/pant.webp",
+    img: "../src/img/Jordan-pants.webp",
     pant: true,
   },
   {
     id: 7,
-    name: "Pants",
-    price: "50.99",
-    img: "../src/img/pant.webp",
+    name: "Pants Cargo",
+    price: "60",
+    img: "../src/img/pants2.webp",
     pant: true,
   },
   {
     id: 8,
-    name: "Pants ",
-    price: "12.5",
-    img: "../src/img/pant.jpg",
-    pant: true,
+    name: "Ti-Shirt ",
+    price: "22",
+    img: "../src/img/Ti-shirt-03.avif",
+    shirt: true,
   },
 ];
 // append in Dom
-
+document.body.style.backgroundImage = "url(../src/img/pants.webp)";
 function createAllElements() {
   items.innerHTML = "";
+  allItems.classList.add("text-green-400");
+  pantFilter.classList.remove("text-green-400");
+  shirtFilter.classList.remove("text-green-400");
   protact.forEach((item) => {
     items.insertAdjacentHTML(
       "beforeend",
       `<div
-        class="container mx-auto p-7 bg-white max-w-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl animate-delay-[`+ item.id * 100 + `ms] animate-fade-down">
-        <div class="md:w-72 lg:w-64 xl:w-72 w-50 h-56  md:h-64 lg:h-64 bg-cover bg-center hover:bg-top transition-all rounded-xl mr-auto ml-auto" style="background-image: url(` +
+        class="container mx-auto p-7 bg-white max-w-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl animate-delay-[` +
+        item.id * 100 +
+        `ms] animate-fade-down">
+        <div  class="md:w-72 lg:w-64 xl:w-72 w-50 h-56  md:h-64 lg:h-64 bg-cover bg-center hover:bg-top transition-all rounded-xl mr-auto ml-auto" style="background-image: url(` +
         item.img +
         `)"></div>
         <div class="flex justify-between items-center">
@@ -162,7 +167,6 @@ function createNewItemCart(item) {
 </li>`
   );
 }
-
 if (listItemCart.innerHTML != "") {
   listItemCart.innerHTML = "No item ! 😐";
   document.getElementById("btn").classList.add("hidden");
@@ -178,6 +182,9 @@ shirtFilter.addEventListener("click", createShirtFilter);
 allItems.addEventListener("click", createAllElements);
 function createShirtFilter() {
   let shirt = [];
+  pantFilter.classList.remove("text-green-400");
+  shirtFilter.classList.add("text-green-400");
+  allItems.classList.remove("text-green-400");
   protact.forEach(function (e) {
     if (e.shirt) {
       shirt.push(e);
@@ -189,7 +196,9 @@ function createShirtFilter() {
     items.insertAdjacentHTML(
       "beforeend",
       `<div
-        class="container mx-auto p-7 bg-white max-w-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl animate-delay-[`+ item.id * 100 + `ms] animate-fade-down">
+        class="container mx-auto p-7 bg-white max-w-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl animate-delay-[` +
+        item.id * 100 +
+        `ms] animate-fade-down">
         <div class="md:w-72 lg:w-64 xl:w-72 w-50 h-56  md:h-64 lg:h-64 bg-cover bg-center hover:bg-top transition-all rounded-xl mr-auto ml-auto" style="background-image: url(` +
         item.img +
         `)"></div>
@@ -219,6 +228,9 @@ function createShirtFilter() {
 }
 function createPantsFilter() {
   let pants = [];
+  pantFilter.classList.add("text-green-400");
+  shirtFilter.classList.remove("text-green-400");
+  allItems.classList.remove("text-green-400");
   let x = protact.forEach(function (e) {
     if (e.pant) {
       pants.push(e);
@@ -229,7 +241,9 @@ function createPantsFilter() {
     items.insertAdjacentHTML(
       "beforeend",
       `<div
-        class="container mx-auto p-7 bg-white max-w-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl animate-delay-[`+ item.id * 100 + `ms] animate-fade-left">
+        class="container mx-auto p-7 bg-white max-w-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl animate-delay-[` +
+        item.id * 100 +
+        `ms] animate-fade-left">
         <div class="md:w-72 lg:w-64 xl:w-72 w-50 h-56  md:h-64 lg:h-64 bg-cover bg-center hover:bg-top transition-all rounded-xl mr-auto ml-auto" style="background-image: url(` +
         item.img +
         `)"></div>
