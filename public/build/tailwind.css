@@ -942,11 +942,38 @@ video {
 .ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-.animate-delay-500 {
+.animate-delay-\[400ms\] {
+  animation-delay: 400ms;
+}
+.animate-delay-\[\] {
+  animation-delay: ;
+}
+.animate-delay-\[100ms\] {
+  animation-delay: 100ms;
+}
+.animate-delay-\[200ms\] {
+  animation-delay: 200ms;
+}
+.animate-delay-\[300ms\] {
+  animation-delay: 300ms;
+}
+.animate-delay-\[500ms\] {
   animation-delay: 500ms;
 }
-.animate-delay-300 {
-  animation-delay: 300ms;
+.animate-delay-\[600ms\] {
+  animation-delay: 600ms;
+}
+.animate-delay-\[700ms\] {
+  animation-delay: 700ms;
+}
+.animate-delay-\[800ms\] {
+  animation-delay: 800ms;
+}
+.animate-delay-\[900ms\] {
+  animation-delay: 900ms;
+}
+.animate-delay-\[00ms\] {
+  animation-delay: 00ms;
 }
 .hover\:-translate-y-1:hover {
   --tw-translate-y: -0.25rem;

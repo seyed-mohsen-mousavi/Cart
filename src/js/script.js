@@ -86,7 +86,7 @@ function createAllElements() {
     items.insertAdjacentHTML(
       "beforeend",
       `<div
-        class="container mx-auto p-7 bg-white max-w-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl animate-fade-down">
+        class="container mx-auto p-7 bg-white max-w-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl animate-delay-[`+ item.id * 100 + `ms] animate-fade-down">
         <div class="md:w-72 lg:w-64 xl:w-72 w-50 h-56  md:h-64 lg:h-64 bg-cover bg-center hover:bg-top transition-all rounded-xl mr-auto ml-auto" style="background-image: url(` +
         item.img +
         `)"></div>
@@ -189,7 +189,7 @@ function createShirtFilter() {
     items.insertAdjacentHTML(
       "beforeend",
       `<div
-        class="container mx-auto p-7 bg-white max-w-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition duration-300 animate-fade-down">
+        class="container mx-auto p-7 bg-white max-w-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl animate-delay-[`+ item.id * 100 + `ms] animate-fade-down">
         <div class="md:w-72 lg:w-64 xl:w-72 w-50 h-56  md:h-64 lg:h-64 bg-cover bg-center hover:bg-top transition-all rounded-xl mr-auto ml-auto" style="background-image: url(` +
         item.img +
         `)"></div>
@@ -229,7 +229,7 @@ function createPantsFilter() {
     items.insertAdjacentHTML(
       "beforeend",
       `<div
-        class="container mx-auto p-7 bg-white max-w-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition duration-300 animate-fade-left">
+        class="container mx-auto p-7 bg-white max-w-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl animate-delay-[`+ item.id * 100 + `ms] animate-fade-left">
         <div class="md:w-72 lg:w-64 xl:w-72 w-50 h-56  md:h-64 lg:h-64 bg-cover bg-center hover:bg-top transition-all rounded-xl mr-auto ml-auto" style="background-image: url(` +
         item.img +
         `)"></div>
