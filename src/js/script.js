@@ -20,7 +20,7 @@ divCart.addEventListener("mouseleave", () => {
   cartItems.classList.remove("animate-fade-left");
 });
 
-const protact = [
+const product = [
   {
     id: 1,
     name: "Ti-Shirt 1",
@@ -160,7 +160,7 @@ function createAllElements() {
   allItems.style.color = "rgb(74 222 128 / var(--tw-text-opacity))";
   pantFilter.style.color = "white";
   shirtFilter.style.color = "white";
-  protact.forEach((item) => {
+  product.forEach((item) => {
     createElemntHandler(item);
   });
   localStorage.clear();
@@ -168,7 +168,7 @@ function createAllElements() {
 }
 const cartItem = [];
 function addItemHanler(e) {
-  cartItem.push(protact[e - 1]);
+  cartItem.push(product[e - 1]);
   itemNumber.innerHTML = cartItem.length;
   document.getElementById("btn").classList.remove("hidden");
   document.getElementById("price").classList.remove("hidden");
@@ -232,7 +232,7 @@ function createShirtFilter() {
   shirtFilter.style.color = "rgb(74 222 128 / var(--tw-text-opacity))";
   pantFilter.style.color = "white";
   allItems.style.color = "white";
-  protact.forEach(function (e) {
+  product.forEach(function (e) {
     if (e.shirt) {
       shirt.push(e);
     }
@@ -250,7 +250,7 @@ function createPantsFilter() {
   pantFilter.style.color = "rgb(74 222 128 / var(--tw-text-opacity))";
   shirtFilter.style.color = "white";
   allItems.style.color = "white";
-  let x = protact.forEach(function (e) {
+  let x = product.forEach(function (e) {
     if (e.pant) {
       pants.push(e);
     }
