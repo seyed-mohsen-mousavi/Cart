@@ -27,6 +27,11 @@ const protact = [
     price: "11.99",
     img: "../src/img/Ti-Shirt-01.jpg",
     shirt: true,
+    sizeXS: true,
+    SizeL: true,
+    sizeM: true,
+    sizeS: true,
+    sizeXL: true,
   },
   {
     id: 2,
@@ -34,6 +39,11 @@ const protact = [
     price: "50.99",
     img: "../src/img/pant.webp",
     pant: true,
+    sizeXS: true,
+    SizeL: true,
+    sizeM: true,
+    sizeS: true,
+    sizeXL: true,
   },
   {
     id: 3,
@@ -41,6 +51,11 @@ const protact = [
     price: "12.5",
     img: "../src/img/pant.jpg",
     pant: true,
+    sizeXS: true,
+    SizeL: true,
+    sizeM: true,
+    sizeS: true,
+    sizeXL: true,
   },
   {
     id: 4,
@@ -48,6 +63,11 @@ const protact = [
     price: "15.99",
     img: "../src/img/Ti-Shirt-02.avif",
     shirt: true,
+    sizeXS: true,
+    SizeL: true,
+    sizeM: true,
+    sizeS: true,
+    sizeXL: true,
   },
   {
     id: 5,
@@ -55,6 +75,11 @@ const protact = [
     price: "15.99",
     img: "../src/img/Polo-Shirt.jpeg",
     shirt: true,
+    sizeXS: true,
+    SizeL: true,
+    sizeM: true,
+    sizeS: true,
+    sizeXL: true,
   },
   {
     id: 6,
@@ -62,6 +87,11 @@ const protact = [
     price: "50.99",
     img: "../src/img/Jordan-pants.webp",
     pant: true,
+    sizeXS: true,
+    SizeL: true,
+    sizeM: true,
+    sizeS: true,
+    sizeXL: true,
   },
   {
     id: 7,
@@ -69,6 +99,11 @@ const protact = [
     price: "60",
     img: "../src/img/pants2.webp",
     pant: true,
+    sizeXS: true,
+    SizeL: true,
+    sizeM: true,
+    sizeS: true,
+    sizeXL: true,
   },
   {
     id: 8,
@@ -76,9 +111,49 @@ const protact = [
     price: "22",
     img: "../src/img/Ti-shirt-03.avif",
     shirt: true,
+    sizeXS: true,
+    SizeL: true,
+    sizeM: true,
+    sizeS: true,
+    sizeXL: true,
   },
 ];
-// append in Dom
+
+function createElemntHandler(item) {
+  items.insertAdjacentHTML(
+    "beforeend",
+    `<div
+      class="container mx-auto p-7 bg-white max-w-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl animate-delay-[` +
+      item.id * 100 +
+      `ms] animate-fade-down">
+      <div  class="md:w-72 lg:w-64 xl:w-72 w-50 h-56  md:h-64 lg:h-64 bg-cover bg-center hover:bg-top transition-all rounded-xl mr-auto ml-auto" style="background-image: url(` +
+      item.img +
+      `)"></div>
+      <div class="flex justify-between items-center">
+          <div>
+              <h1 class="mt-5 lg:text-2xl md:text-2xl text-sm font-semibold">` +
+      item.name +
+      `</h1>
+      <div class="flex gap-2">
+      <p class="font-Oswald text-lg">$<span class="mt-2">` +item.price +`</span></p>
+      <p class="font-Oswald text-lg">$<span class="mt-2 line-through decoration-red-600 cursor-default">`  +  (+item.price + 4).toFixed(2) + `</span></p>
+      </div>
+          </div>
+          <div>
+          <div class="flex flex-col gap-2 m-5">
+          <button onclick="addItemHanler(` +
+      item.id +
+      `)" class="text-white text-sm md:text-md lg:text-md xl:text-md 2xl:text-lg font-semibold bg-green-400 py-1 px-1 md:py-2 md:px-4 xl:py-2 xl:px-4 lg:py-2 lg:px-4 rounded-lg shadow-md hover:shadow-lg transition duration-500 transform-gpu hover:scale-110">Buy Now</button>
+                  <button onclick="showDataProduct(` +
+      item.id +
+      `)" class="text-white text-sm md:text-md lg:text-md xl:text-md 2xl:text-lg font-semibold bg-slate-300 py-1 px-1 md:py-2 md:px-4 xl:py-2 xl:px-4 lg:py-2 lg:px-4 rounded-lg shadow-md hover:shadow-lg transition duration-500 transform-gpu hover:scale-110">Continuation</button>
+            </div>
+          </div>
+      </div>
+      </div>`
+  );
+}
+
 document.body.style.backgroundImage = "url(../src/img/pants.webp)";
 function createAllElements() {
   items.innerHTML = "";
@@ -86,37 +161,7 @@ function createAllElements() {
   pantFilter.style.color = "white";
   shirtFilter.style.color = "white";
   protact.forEach((item) => {
-    items.insertAdjacentHTML(
-      "beforeend",
-      `<div
-        class="container mx-auto p-7 bg-white max-w-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl animate-delay-[` +
-        item.id * 100 +
-        `ms] animate-fade-down">
-        <div  class="md:w-72 lg:w-64 xl:w-72 w-50 h-56  md:h-64 lg:h-64 bg-cover bg-center hover:bg-top transition-all rounded-xl mr-auto ml-auto" style="background-image: url(` +
-        item.img +
-        `)"></div>
-        <div class="flex justify-between items-center">
-            <div>
-                <h1 class="mt-5 lg:text-2xl md:text-2xl text-sm font-semibold">` +
-        item.name +
-        `</h1>
-                <p class="mt-2">` +
-        item.price +
-        `</p>
-            </div>
-            <div>
-            <div class="flex flex-col gap-2 m-5">
-            <button onclick="addItemHanler(` +
-        item.id +
-        `)" class="text-white text-sm md:text-md lg:text-md xl:text-md 2xl:text-lg font-semibold bg-green-400 py-1 px-1 md:py-2 md:px-4 xl:py-2 xl:px-4 lg:py-2 lg:px-4 rounded-lg shadow-md hover:shadow-lg transition duration-500 transform-gpu hover:scale-110">Buy Now</button>
-                    <button onclick="showDataProduct(` +
-        item.id +
-        `)" class="text-white text-sm md:text-md lg:text-md xl:text-md 2xl:text-lg font-semibold bg-slate-300 py-1 px-1 md:py-2 md:px-4 xl:py-2 xl:px-4 lg:py-2 lg:px-4 rounded-lg shadow-md hover:shadow-lg transition duration-500 transform-gpu hover:scale-110">More Data</button>
-              </div>
-            </div>
-        </div>
-        </div>`
-    );
+    createElemntHandler(item);
   });
   localStorage.clear();
   localStorage.setItem("all", true);
@@ -195,37 +240,7 @@ function createShirtFilter() {
 
   items.innerHTML = "";
   shirt.forEach((item) => {
-    items.insertAdjacentHTML(
-      "beforeend",
-      `<div
-        class="container mx-auto p-7 bg-white max-w-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl animate-delay-[` +
-        item.id * 100 +
-        `ms] animate-fade-down">
-        <div  class="md:w-72 lg:w-64 xl:w-72 w-50 h-56  md:h-64 lg:h-64 bg-cover bg-center hover:bg-top transition-all rounded-xl mr-auto ml-auto" style="background-image: url(` +
-        item.img +
-        `)"></div>
-        <div class="flex justify-between items-center">
-            <div>
-                <h1 class="mt-5 lg:text-2xl md:text-2xl text-sm font-semibold">` +
-        item.name +
-        `</h1>
-                <p class="mt-2">` +
-        item.price +
-        `</p>
-            </div>
-            <div>
-            <div class="flex flex-col gap-2 m-5">
-            <button onclick="addItemHanler(` +
-        item.id +
-        `)" class="text-white text-sm md:text-md lg:text-md xl:text-md 2xl:text-lg font-semibold bg-green-400 py-1 px-1 md:py-2 md:px-4 xl:py-2 xl:px-4 lg:py-2 lg:px-4 rounded-lg shadow-md hover:shadow-lg transition duration-500 transform-gpu hover:scale-110">Buy Now</button>
-                    <button onclick="showDataProduct(` +
-        item.id +
-        `)" class="text-white text-sm md:text-md lg:text-md xl:text-md 2xl:text-lg font-semibold bg-slate-300 py-1 px-1 md:py-2 md:px-4 xl:py-2 xl:px-4 lg:py-2 lg:px-4 rounded-lg shadow-md hover:shadow-lg transition duration-500 transform-gpu hover:scale-110">More Data</button>
-              </div>
-            </div>
-        </div>
-        </div>`
-    );
+    createElemntHandler(item);
   });
   localStorage.clear();
   localStorage.setItem("shirt", true);
@@ -242,37 +257,7 @@ function createPantsFilter() {
   });
   items.innerHTML = "";
   pants.forEach((item) => {
-    items.insertAdjacentHTML(
-      "beforeend",
-      `<div
-        class="container mx-auto p-7 bg-white max-w-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl animate-delay-[` +
-        item.id * 100 +
-        `ms] animate-fade-down">
-        <div  class="md:w-72 lg:w-64 xl:w-72 w-50 h-56  md:h-64 lg:h-64 bg-cover bg-center hover:bg-top transition-all rounded-xl mr-auto ml-auto" style="background-image: url(` +
-        item.img +
-        `)"></div>
-        <div class="flex justify-between items-center">
-            <div>
-                <h1 class="mt-5 lg:text-2xl md:text-2xl text-sm font-semibold">` +
-        item.name +
-        `</h1>
-                <p class="mt-2">` +
-        item.price +
-        `</p>
-            </div>
-            <div>
-            <div class="flex flex-col gap-2 m-5">
-            <button onclick="addItemHanler(` +
-        item.id +
-        `)" class="text-white text-sm md:text-md lg:text-md xl:text-md 2xl:text-lg font-semibold bg-green-400 py-1 px-1 md:py-2 md:px-4 xl:py-2 xl:px-4 lg:py-2 lg:px-4 rounded-lg shadow-md hover:shadow-lg transition duration-500 transform-gpu hover:scale-110">Buy Now</button>
-                    <button onclick="showDataProduct(` +
-        item.id +
-        `)" class="text-white text-sm md:text-md lg:text-md xl:text-md 2xl:text-lg font-semibold bg-slate-300 py-1 px-1 md:py-2 md:px-4 xl:py-2 xl:px-4 lg:py-2 lg:px-4 rounded-lg shadow-md hover:shadow-lg transition duration-500 transform-gpu hover:scale-110">More Data</button>
-              </div>
-            </div>
-        </div>
-        </div>`
-    );
+    createElemntHandler(item);
   });
   localStorage.clear();
   localStorage.setItem("pants", true);
