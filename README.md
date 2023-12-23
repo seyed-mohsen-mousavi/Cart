@@ -12,4 +12,9 @@ if You Liked Please Fallow my github Page❤️<br>
 
 ## Preview
 <img src="./src/img/shot website.png">
+
+### Project capabilities
+>Product filter 
+>Dynamic
+>Beautifullllllllll
 <!-- Mr.root For Ever 😁 -->
