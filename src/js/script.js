@@ -1,14 +1,20 @@
 // Hi evryone ❤️
-const cart = document.getElementById("cart");
-const cartItems = document.getElementById("cart-items");
-const divCart = document.getElementById("mouse-out");
-const listItemCart = document.getElementById("list-itemCart");
-const items = document.getElementById("Items");
-const itemNumber = document.getElementById("total_item_number");
 
-const pantFilter = document.getElementById("pants");
-const shirtFilter = document.getElementById("shirt");
-const allItems = document.getElementById("all");
+let $ = document;
+const cart = $.getElementById("cart");
+const cartItems = $.getElementById("cart-items");
+const divCart = $.getElementById("mouse-out");
+const listItemCart = $.getElementById("list-itemCart");
+const items = $.getElementById("Items");
+const itemNumber = $.getElementById("total_item_number");
+
+const searchUl = $.querySelector(".autocom-box");
+const searchActiv = $.querySelector(".search-input");
+const searchInput = $.querySelector("input");
+
+const pantFilter = $.getElementById("pants");
+const shirtFilter = $.getElementById("shirt");
+const allItems = $.getElementById("all");
 // animation Cart And Hover :
 cart.addEventListener("mouseover", () => {
   cartItems.classList.add("animate-fade-left");
@@ -24,15 +30,10 @@ divCart.addEventListener("mouseleave", () => {
 const product = [
   {
     id: 1,
-    name: "Ti-Shirt 1",
+    name: "Shirt 1",
     price: "11.99",
     img: "../src/img/Ti-Shirt-01.jpg",
     shirt: true,
-    sizeXS: true,
-    SizeL: true,
-    sizeM: true,
-    sizeS: true,
-    sizeXL: true,
   },
   {
     id: 2,
@@ -40,47 +41,27 @@ const product = [
     price: "50.99",
     img: "../src/img/pant.webp",
     pant: true,
-    sizeXS: true,
-    SizeL: true,
-    sizeM: true,
-    sizeS: true,
-    sizeXL: true,
   },
   {
     id: 3,
-    name: "Pants ",
+    name: "Pants Cargo lash",
     price: "12.5",
     img: "../src/img/pant.jpg",
     pant: true,
-    sizeXS: true,
-    SizeL: true,
-    sizeM: true,
-    sizeS: true,
-    sizeXL: true,
   },
   {
     id: 4,
-    name: "Ti-Shirt 2",
+    name: "Shirt 3",
     price: "15.99",
     img: "../src/img/Ti-Shirt-02.avif",
     shirt: true,
-    sizeXS: true,
-    SizeL: true,
-    sizeM: true,
-    sizeS: true,
-    sizeXL: true,
   },
   {
     id: 5,
-    name: "Polo Shirt",
+    name: "Shirt polo",
     price: "15.99",
     img: "../src/img/Polo-Shirt.jpeg",
     shirt: true,
-    sizeXS: true,
-    SizeL: true,
-    sizeM: true,
-    sizeS: true,
-    sizeXL: true,
   },
   {
     id: 6,
@@ -88,11 +69,6 @@ const product = [
     price: "50.99",
     img: "../src/img/Jordan-pants.webp",
     pant: true,
-    sizeXS: true,
-    SizeL: true,
-    sizeM: true,
-    sizeS: true,
-    sizeXL: true,
   },
   {
     id: 7,
@@ -100,23 +76,13 @@ const product = [
     price: "60",
     img: "../src/img/pants2.webp",
     pant: true,
-    sizeXS: true,
-    SizeL: true,
-    sizeM: true,
-    sizeS: true,
-    sizeXL: true,
   },
   {
     id: 8,
-    name: "Ti-Shirt ",
+    name: "Shirt 4",
     price: "22",
     img: "../src/img/Ti-shirt-03.avif",
     shirt: true,
-    sizeXS: true,
-    SizeL: true,
-    sizeM: true,
-    sizeS: true,
-    sizeXL: true,
   },
 ];
 // The root of all 1.createAllElements 2.createShirtFilter 3.createPantsFilter
@@ -132,14 +98,14 @@ function createElemntHandler(item) {
       `)"></div>
       <div class="flex justify-between items-center">
           <div>
-              <h1 class="mt-5 lg:text-2xl md:text-2xl text-sm font-semibold">` +
+              <h1 class="mt-5 lg:text-xl md:text-xl text-sm font-semibold">` +
       item.name +
       `</h1>
-      <div class="flex gap-2">
-      <p class="font-Oswald text-lg">$<span class="mt-2">` +
+      <div class="flex gap-2 mt-4">
+      <p class="font-Oswald">$<span >` +
       item.price +
       `</span></p>
-      <p class="font-Oswald text-lg">$<span class="mt-2 line-through decoration-red-600 cursor-default">` +
+      <p class="font-Oswald">$<span class=" line-through decoration-red-600 cursor-default">` +
       (+item.price + 4).toFixed(2) +
       `</span></p>
       </div>
@@ -159,7 +125,7 @@ function createElemntHandler(item) {
   );
 }
 // Bakcground Image: Body
-document.body.style.backgroundImage = "url(../src/img/pants.webp)";
+$.body.style.backgroundImage = "url(../src/img/pants.webp)";
 
 // function for createAll Elements in click to the All button To html
 function createAllElements() {
@@ -179,14 +145,13 @@ const cartItem = [];
 function addItemHanler(e) {
   cartItem.push(product[e - 1]);
   itemNumber.innerHTML = cartItem.length;
-  document.getElementById("btn").classList.remove("hidden");
-  document.getElementById("price").classList.remove("hidden");
+  $.getElementById("btn").classList.remove("hidden");
+  $.getElementById("price").classList.remove("hidden");
   listItemCart.innerHTML = "";
   let sum = 0;
   cartItem.forEach((e) => {
     sum += Number(e.price);
-    document.getElementById("price").innerHTML =
-      "Total Price : " + sum.toFixed(2);
+    $.getElementById("price").innerHTML = "Total Price : " + sum.toFixed(2);
   });
   cartItem.forEach((e) => {
     createNewItemCart(e);
@@ -226,8 +191,8 @@ function createNewItemCart(item) {
 // for moments is empty cartElm
 if (listItemCart.innerHTML != "") {
   listItemCart.innerHTML = "No item ! 😐";
-  document.getElementById("btn").classList.add("hidden");
-  document.getElementById("price").classList.add("hidden");
+  $.getElementById("btn").classList.add("hidden");
+  $.getElementById("price").classList.add("hidden");
 }
 // log my Name
 console.warn("Mr.R00T");
@@ -258,7 +223,7 @@ function createShirtFilter() {
   localStorage.setItem("shirt", true);
 }
 
-// Filter Pants 
+// Filter Pants
 function createPantsFilter() {
   let pants = [];
   pantFilter.style.color = "rgb(74 222 128 / var(--tw-text-opacity))";
@@ -290,7 +255,61 @@ window.addEventListener("load", () => {
 });
 
 function showDataProduct(e) {
-  console.log(e);
+  searchInput.value = "";
   let sum = "/E:/Cart/public/product.html?" + "id=" + e;
   location.href = sum;
+}
+
+// Search
+
+let searchInputValue;
+
+// find by includes
+searchInput.addEventListener("keyup", (e) => {
+  searchUl.innerHTML = "";
+  if(searchInput.value){
+    if (searchInput.value) {
+      searchActiv.classList.add("active");
+      searchUl.classList.add("animate-fade-up");
+    } else {
+      searchActiv.classList.remove("active");
+      searchUl.classList.remove("animate-fade-up");
+    }
+    searchInputValue = searchInput.value;
+    let filterSearch = product.filter((e) => {
+      return e.name
+        .toLocaleLowerCase()
+        .startsWith(searchInputValue.toLocaleLowerCase());
+    });
+  
+    if (filterSearch.length > 0) {
+      searchLiGenerator(filterSearch);
+    } else {
+      searchActiv.classList.remove("active");
+    }
+    if (e.keyCode === 13) {
+      let fristLength = filterSearch[0];
+      showDataProduct(fristLength.id)
+    }
+  }
+});
+function searchLiGenerator(name) {
+  name.forEach((e) => {
+    searchUl.insertAdjacentHTML(
+      "beforeend",
+      `                            <li onclick="showDataProduct(` +
+        e.id +
+        `)" class="items-center hover:bg-[#b8b8b85d] transition-all w-full">
+      <div class="flex flex-col rounded-md w-10 h-10 bg-gray-300 justify-center items-center mr-4 bg-cover bg-center"
+          style="background-image:url(` +
+        e.img +
+        `)">
+      </div>
+      <p class="font-medium  text-white">` +
+        e.name +
+        `</p>
+  </li>
+    `
+    );
+  });
 }

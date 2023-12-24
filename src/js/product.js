@@ -1,7 +1,7 @@
-const protact = [
+const product = [
   {
     id: 1,
-    name: "Ti-Shirt 1",
+    name: "Shirt 1",
     price: "11.99",
     img: "../src/img/Ti-Shirt-01.jpg",
     shirt: true,
@@ -15,21 +15,21 @@ const protact = [
   },
   {
     id: 3,
-    name: "Pants ",
+    name: "Pants Cargo lash",
     price: "12.5",
     img: "../src/img/pant.jpg",
     pant: true,
   },
   {
     id: 4,
-    name: "Ti-Shirt 2",
+    name: "Shirt 3",
     price: "15.99",
     img: "../src/img/Ti-Shirt-02.avif",
     shirt: true,
   },
   {
     id: 5,
-    name: "Polo Shirt",
+    name: "Shirt polo",
     price: "15.99",
     img: "../src/img/Polo-Shirt.jpeg",
     shirt: true,
@@ -50,7 +50,7 @@ const protact = [
   },
   {
     id: 8,
-    name: "Ti-Shirt ",
+    name: "Shirt 4",
     price: "22",
     img: "../src/img/Ti-shirt-03.avif",
     shirt: true,
@@ -62,7 +62,7 @@ let locationSearchParams = new URLSearchParams(nowLocation);
 let userIDParam = locationSearchParams.get("id");
 
 // Find item 
-let findedprotact = protact.find((e) => {
+let findedprotact = product.find((e) => {
   return e.id == userIDParam;
 });
 // Create Element Html
