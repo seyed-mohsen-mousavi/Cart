@@ -818,6 +818,21 @@ video {
 .animate-fade-up {
   animation: fade-up 1s both;
 }
+@keyframes flip-up {
+
+  0% {
+    transform: rotateX(90deg);
+    transform-origin: bottom;
+  }
+
+  100% {
+    transform: rotateX(0);
+    transform-origin: bottom;
+  }
+}
+.animate-flip-up {
+  animation: flip-up 1s both;
+}
 .cursor-default {
   cursor: default;
 }
@@ -834,6 +849,9 @@ video {
 }
 .flex-row {
   flex-direction: row;
+}
+.flex-row-reverse {
+  flex-direction: row-reverse;
 }
 .flex-col {
   flex-direction: column;
@@ -1140,6 +1158,14 @@ video {
 }
 .ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.placeholder\:text-white::-moz-placeholder {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+.placeholder\:text-white::placeholder {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 .hover\:-translate-y-1:hover {
   --tw-translate-y: -0.25rem;

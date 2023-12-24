@@ -269,13 +269,15 @@
 
 
 
-
+/* Search box Style */
   ::selection{
     color: #fff;
-    background: #664AFF;
+    background: rgb(122, 233, 122);
   }
   
-
+::placeholder{
+  color: white;
+}
   
   .search-input input{
     height: 55px;
@@ -308,10 +310,6 @@
     padding: 10px 8px;
     opacity: 1;
     pointer-events: auto;
-  }
-  .search-input.active .autocom-box::-webkit-scrollbar {
-    display: block;
-    color: red;
   }
   .autocom-box li{
     list-style: none;

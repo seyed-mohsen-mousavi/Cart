@@ -68,7 +68,10 @@ let findedprotact = product.find((e) => {
 // Create Element Html
 productElm.insertAdjacentHTML(
   "beforeend",
-  `        <div class="flex flex-col h-full">
+  `<div class="rounded-2xl w-3/6 ml-auto h-full bg-cover bg-center animate-fade" style="background-image:url( ` +
+  findedprotact.img +
+  `)"></div>
+          <div class="flex flex-col h-full">
 <div>
     <h1 class="text-8xl font-medium font-Rubik animate-wiggle">` +
     findedprotact.name +
@@ -103,8 +106,6 @@ productElm.insertAdjacentHTML(
     </button>
 </div>
 </div>
-<div class="rounded-2xl w-3/6 ml-auto h-full bg-cover bg-center animate-fade" style="background-image:url( ` +
-    findedprotact.img +
-    `)"></div>`
+`
 );
 document.title = findedprotact.name;

@@ -84,6 +84,7 @@ const product = [
     img: "../src/img/Ti-shirt-03.avif",
     shirt: true,
   },
+  
 ];
 // The root of all 1.createAllElements 2.createShirtFilter 3.createPantsFilter
 function createElemntHandler(item) {
@@ -264,10 +265,9 @@ function showDataProduct(e) {
 
 let searchInputValue;
 
-// find by includes
 searchInput.addEventListener("keyup", (e) => {
   searchUl.innerHTML = "";
-  if(searchInput.value){
+  if (searchInput.value) {
     if (searchInput.value) {
       searchActiv.classList.add("active");
       searchUl.classList.add("animate-fade-up");
@@ -281,15 +281,16 @@ searchInput.addEventListener("keyup", (e) => {
         .toLocaleLowerCase()
         .startsWith(searchInputValue.toLocaleLowerCase());
     });
-  
+
     if (filterSearch.length > 0) {
       searchLiGenerator(filterSearch);
     } else {
       searchActiv.classList.remove("active");
     }
+    // if click Enter (Enter Key Code:13) =>
     if (e.keyCode === 13) {
       let fristLength = filterSearch[0];
-      showDataProduct(fristLength.id)
+      showDataProduct(fristLength.id);
     }
   }
 });

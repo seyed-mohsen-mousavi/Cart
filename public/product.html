@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title></title>
   <link rel="stylesheet" href="./build/tailwind.css" />
-  <link rel="stylesheet" href="../src/css/s.css" />
+  <link rel="stylesheet" href="../src/css/somthingStyle.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
 
   <!-- Back button -->
   <button onclick="history.back()"
-    class="inline-flex items-center px-4 py-2 bg-green-500 hover:bg-green-400  text-white text-sm font-medium rounded-md absolute top-5 left-5">
+    class="z-50 inline-flex items-center px-4 py-2 bg-green-500 hover:bg-green-400  text-white text-sm font-medium rounded-md absolute top-5 left-5">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
         d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
@@ -24,7 +24,7 @@
     Back
   </button>
   <!-- All product -->
-  <section class="container relative  w-full h-screen p-5 flex" id="product">
+  <section class="container relative  w-full h-screen p-5 flex flex-row-reverse" id="product">
     <!-- Like Btn -->
     <button class="like-button absolute w-5 h-5 right-8 top-8">
       <div class="like-wrapper">
