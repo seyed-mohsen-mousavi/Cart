@@ -61,10 +61,11 @@ let nowLocation = location.search;
 let locationSearchParams = new URLSearchParams(nowLocation);
 let userIDParam = locationSearchParams.get("id");
 
+// Find item 
 let findedprotact = protact.find((e) => {
   return e.id == userIDParam;
 });
-
+// Create Element Html
 productElm.insertAdjacentHTML(
   "beforeend",
   `        <div class="flex flex-col h-full">

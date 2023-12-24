@@ -20,6 +20,7 @@ divCart.addEventListener("mouseleave", () => {
   cartItems.classList.remove("animate-fade-left");
 });
 
+// add or remove Item in object
 const product = [
   {
     id: 1,
@@ -118,7 +119,7 @@ const product = [
     sizeXL: true,
   },
 ];
-
+// The root of all 1.createAllElements 2.createShirtFilter 3.createPantsFilter
 function createElemntHandler(item) {
   items.insertAdjacentHTML(
     "beforeend",
@@ -135,8 +136,12 @@ function createElemntHandler(item) {
       item.name +
       `</h1>
       <div class="flex gap-2">
-      <p class="font-Oswald text-lg">$<span class="mt-2">` +item.price +`</span></p>
-      <p class="font-Oswald text-lg">$<span class="mt-2 line-through decoration-red-600 cursor-default">`  +  (+item.price + 4).toFixed(2) + `</span></p>
+      <p class="font-Oswald text-lg">$<span class="mt-2">` +
+      item.price +
+      `</span></p>
+      <p class="font-Oswald text-lg">$<span class="mt-2 line-through decoration-red-600 cursor-default">` +
+      (+item.price + 4).toFixed(2) +
+      `</span></p>
       </div>
           </div>
           <div>
@@ -153,8 +158,10 @@ function createElemntHandler(item) {
       </div>`
   );
 }
-
+// Bakcground Image: Body
 document.body.style.backgroundImage = "url(../src/img/pants.webp)";
+
+// function for createAll Elements in click to the All button To html
 function createAllElements() {
   items.innerHTML = "";
   allItems.style.color = "rgb(74 222 128 / var(--tw-text-opacity))";
@@ -166,6 +173,8 @@ function createAllElements() {
   localStorage.clear();
   localStorage.setItem("all", true);
 }
+
+// add product Cart And Total Price
 const cartItem = [];
 function addItemHanler(e) {
   cartItem.push(product[e - 1]);
@@ -189,7 +198,7 @@ function addItemHanler(e) {
     cartItems.classList.remove("h-60");
   }
 }
-
+// Create Product Elm
 function createNewItemCart(item) {
   listItemCart.insertAdjacentHTML(
     "beforeend",
@@ -214,6 +223,7 @@ function createNewItemCart(item) {
 </li>`
   );
 }
+// for moments is empty cartElm
 if (listItemCart.innerHTML != "") {
   listItemCart.innerHTML = "No item ! 😐";
   document.getElementById("btn").classList.add("hidden");
@@ -223,10 +233,12 @@ if (listItemCart.innerHTML != "") {
 console.warn("Mr.R00T");
 // ------
 
-// Filter and SeItems localStorage
+//All Filter and SeItems localStorage
 pantFilter.addEventListener("click", createPantsFilter);
 shirtFilter.addEventListener("click", createShirtFilter);
 allItems.addEventListener("click", createAllElements);
+
+// Filter TI-shirts
 function createShirtFilter() {
   let shirt = [];
   shirtFilter.style.color = "rgb(74 222 128 / var(--tw-text-opacity))";
@@ -245,6 +257,8 @@ function createShirtFilter() {
   localStorage.clear();
   localStorage.setItem("shirt", true);
 }
+
+// Filter Pants 
 function createPantsFilter() {
   let pants = [];
   pantFilter.style.color = "rgb(74 222 128 / var(--tw-text-opacity))";
@@ -262,6 +276,7 @@ function createPantsFilter() {
   localStorage.clear();
   localStorage.setItem("pants", true);
 }
+
 // GetItems in localStorage
 // ----------------
 window.addEventListener("load", () => {
