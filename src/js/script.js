@@ -146,18 +146,12 @@ let cartItem = [];
 function addItemHanler(e) {
   cartItem.push(product[e - 1]);
   $.getElementById("btn").classList.remove("hidden");
-  $.getElementById("price").classList.remove("hidden");
   createCartitem();
   localStorage.setItem("cart", JSON.stringify(cartItem));
 }
 function createCartitem() {
   itemNumber.innerHTML = cartItem.length;
   listItemCart.innerHTML = "";
-  let sum = 0;
-  cartItem.forEach((e) => {
-    sum += Number(e.price);
-    $.getElementById("price").innerHTML = "Total Price : " + sum.toFixed(2);
-  });
   cartItem.forEach((e) => {
     createNewItemCart(e);
   });
@@ -197,7 +191,6 @@ function createNewItemCart(item) {
 if (listItemCart.innerHTML != "") {
   listItemCart.innerHTML = "No item ! 😐";
   $.getElementById("btn").classList.add("hidden");
-  $.getElementById("price").classList.add("hidden");
 }
 // log my Name
 console.warn("Mr.R00T");
@@ -262,7 +255,7 @@ window.addEventListener("load", () => {
 });
 window.addEventListener("load", () => {
   let geted = JSON.parse(localStorage.getItem("cart"))
-  if(geted != null){
+  if(geted){
     cartItem = geted; 
     createCartitem(); 
   }

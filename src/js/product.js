@@ -61,7 +61,7 @@ let nowLocation = location.search;
 let locationSearchParams = new URLSearchParams(nowLocation);
 let userIDParam = locationSearchParams.get("id");
 
-// Find item 
+// Find item
 let findedprotact = product.find((e) => {
   return e.id == userIDParam;
 });
@@ -69,8 +69,8 @@ let findedprotact = product.find((e) => {
 productElm.insertAdjacentHTML(
   "beforeend",
   `<div class="rounded-2xl w-3/6 ml-auto h-full bg-cover bg-center animate-fade" style="background-image:url( ` +
-  findedprotact.img +
-  `)"></div>
+    findedprotact.img +
+    `)"></div>
           <div class="flex flex-col h-full">
 <div>
     <h1 class="text-8xl font-medium font-Rubik animate-wiggle">` +
@@ -86,7 +86,9 @@ productElm.insertAdjacentHTML(
         corrupti odio, aliquam qui laboriosam quos. Necessitatibus dolore sint reprehenderit.</p>
 </div>
 <div class="flex items-center gap-5 p-6 pb-10 mt-auto ">
-    <p class="text-4xl font-Oswald ">$<span>`+ findedprotact.price +`</span></p>
+    <p class="text-4xl font-Oswald ">$<span>` +
+    findedprotact.price +
+    `</span></p>
     <button class=" space-y-20 group">
         <div class="w-full">
             <div class="flex-1 h-full w-96 mx-auto">
