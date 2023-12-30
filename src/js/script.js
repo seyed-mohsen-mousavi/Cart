@@ -84,7 +84,6 @@ const product = [
     img: "../src/img/Ti-shirt-03.avif",
     shirt: true,
   },
-  
 ];
 // The root of all 1.createAllElements 2.createShirtFilter 3.createPantsFilter
 function createElemntHandler(item) {
@@ -137,17 +136,22 @@ function createAllElements() {
   product.forEach((item) => {
     createElemntHandler(item);
   });
-  localStorage.clear();
+  localStorage.removeItem("pants");
+  localStorage.removeItem("shirt");
   localStorage.setItem("all", true);
 }
 
 // add product Cart And Total Price
-const cartItem = [];
+let cartItem = [];
 function addItemHanler(e) {
   cartItem.push(product[e - 1]);
-  itemNumber.innerHTML = cartItem.length;
   $.getElementById("btn").classList.remove("hidden");
   $.getElementById("price").classList.remove("hidden");
+  createCartitem();
+  localStorage.setItem("cart", JSON.stringify(cartItem));
+}
+function createCartitem() {
+  itemNumber.innerHTML = cartItem.length;
   listItemCart.innerHTML = "";
   let sum = 0;
   cartItem.forEach((e) => {
@@ -220,7 +224,8 @@ function createShirtFilter() {
   shirt.forEach((item) => {
     createElemntHandler(item);
   });
-  localStorage.clear();
+  localStorage.removeItem("pants");
+  localStorage.removeItem("all");
   localStorage.setItem("shirt", true);
 }
 
@@ -239,7 +244,8 @@ function createPantsFilter() {
   pants.forEach((item) => {
     createElemntHandler(item);
   });
-  localStorage.clear();
+  localStorage.removeItem("shirt");
+  localStorage.removeItem("all");
   localStorage.setItem("pants", true);
 }
 
@@ -254,11 +260,25 @@ window.addEventListener("load", () => {
     createAllElements();
   }
 });
-
+window.addEventListener("load", () => {
+  let geted = JSON.parse(localStorage.getItem("cart"))
+  if(geted != null){
+    cartItem = geted; 
+    createCartitem(); 
+  }
+});
+// show product
 function showDataProduct(e) {
   searchInput.value = "";
   let sum = "/E:/Cart/public/product.html?" + "id=" + e;
   location.href = sum;
+}
+function showCart(e) {
+  if (cartItem.length > 0) {
+    searchInput.value = "";
+    let sum = "/E:/Cart/public/cart.html?" + "id=" + JSON.stringify(cartItem);
+    location.href = sum;
+  }
 }
 
 // Search
