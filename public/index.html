@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8" />
@@ -15,8 +15,8 @@
 
 <body class="h-screen scroll-smooth bg-cover bg-center">
     <section class="container  pb-5 rounded-b-lg pt-2  ">
-        <!-- Cart Div -->
-        <div class="absolute z-50 " id="mouse-out" onclick="showCart()">
+        <!-- Cart BTN -->
+        <div class="absolute z-50 ">
             <button class="group/cart bg-white p-2 rounded-lg hover:bg-slate-400 transition-colors relative" id="cart">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" data-slot="icon" class="w-6 h-6 group-hover/cart:text-white">
@@ -26,25 +26,6 @@
                 <span class="absolute w-4 h-4 bg-green-300 rounded-full text-xs text-center font-semibold text-white "
                     id="total_item_number">0</span>
             </button>
-            <div class="container hidden mx-auto w-full  items-center justify-center  flex-col  scroll-smooth"
-                id="cart-items">
-                <ul class="flex flex-col bg-gray-300 p-5 rounded " id="list-itemCart">
-                </ul>
-
-                <button id="btn"
-                    class="overflow-hidden absolute right-0 -bottom-6 w-20 p-2 h-10 bg-gray-200 text-black border-none rounded-md text-sm font-bold cursor-pointer  z-10 group">
-                    Buy 🛒
-                    <span
-                        class="absolute w-36 h-32 -top-8 -left-2 bg-white rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-500 duration-1000 origin-left"></span>
-                    <span
-                        class="absolute w-36 h-32 -top-8 -left-2 bg-green-300 rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-700 duration-700 origin-left"></span>
-                    <span
-                        class="absolute w-36 h-32 -top-8 -left-2 bg-green-400  rotate-12 transform scale-x-0 group-hover:scale-x-50 transition-transform group-hover:duration-1000 duration-500 origin-left"></span>
-                    <span
-                        class="group-hover:opacity-100 group-hover:duration-1000 duration-100 opacity-0 absolute top-2.5 left-3 z-10 text-white">Let's
-                        Go!</span>
-                </button>
-            </div>
         </div>
         <!-- Filter Card -->
         <div class="m-5 ml-14 flex justify-between items-center">
@@ -73,15 +54,77 @@
                     <button id="pants"
                         class="text-white text-sm md:text-xl lg:text-xl xl:text-xl 2xl:text-xl 3xl:text-xl pl-4 transition-all font-semibold">Pants</button>
                     <button id="shirt"
-                        class="text-white text-sm md:text-xl lg:text-xl xl:text-xl 2xl:text-xl 3xl:text-xl pl-4 transition-all font-semibold">Ti-Shirt</button>
+                        class="text-white text-sm md:text-xl lg:text-xl xl:text-xl 2xl:text-xl 3xl:text-xl pl-4 transition-all font-semibold">Shirt</button>
                 </div>
             </div>
         </div>
         <!-- Card Show All product -->
         <div id="Items" class="grid gap-4 grid-cols-2 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 ">
         </div>
+        <!-- shopping cart -->
+        <div class="invisible relative z-10 ease-in-out duration-500 opacity-0" aria-labelledby="slide-over-title" role="dialog"
+            aria-modal="true" id="shopping-cart">
+            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+            <div class="fixed inset-0 overflow-hidden " id="sideRoot">
+                <div class="absolute inset-0 overflow-hidden">
+                    <div class="  pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10 transform transition ease-in-out duration-500 sm:duration-700"
+                        id="side">
+                        <div class="pointer-events-auto w-screen max-w-md">
+                            <div class="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
+                                <div class="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
+                                    <div class="flex items-start justify-between">
+                                        <h2 class="text-lg font-medium text-gray-900" id="slide-over-title">Shopping
+                                            cart</h2>
+                                        <div class="ml-3 flex h-7 items-center">
+                                            <button type="button"
+                                                class="relative -m-2 p-2 text-gray-400 hover:text-gray-500" id="close">
+                                                <span class="absolute -inset-0.5"></span>
+                                                <span class="sr-only">Close panel</span>
+                                                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                                    stroke="currentColor" aria-hidden="true">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M6 18L18 6M6 6l12 12" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="mt-8">
+                                        <div class="flow-root">
+                                            <ul role="list" class="-my-6 divide-y divide-gray-200" id="cartitems">
+                                                <!--  products... -->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="border-t border-gray-200 px-4 py-6 sm:px-6">
+                                    <div class="flex justify-between text-base font-medium text-gray-900">
+                                        <p>Subtotal</p>
+                                        <p>$<span id="subtotal"></span></p>
+                                    </div>
+                                    <p class="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.
+                                    </p>
+                                    <div class="mt-6">
+                                        <a href="#"
+                                            class="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">Checkout</a>
+                                    </div>
+                                    <div class="mt-6 flex justify-center text-center text-sm text-gray-500">
+                                        <p>
+                                            or
+                                            <button type="button" onclick="showCart()"
+                                                class="font-medium text-indigo-600 hover:text-indigo-500">
+                                                Continue Shopping
+                                                <span aria-hidden="true"> &rarr;</span>
+                                            </button>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-
     <script src="../src/js/script.js"></script>
 </body>
 

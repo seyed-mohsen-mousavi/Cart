@@ -2,11 +2,13 @@
 
 let $ = document;
 const cart = $.getElementById("cart");
-const cartItems = $.getElementById("cart-items");
 const divCart = $.getElementById("mouse-out");
-const listItemCart = $.getElementById("list-itemCart");
 const items = $.getElementById("Items");
 const itemNumber = $.getElementById("total_item_number");
+const totalPrice = $.getElementById("subtotal");
+const cartItems = $.getElementById("cartitems");
+const closeBtn = $.getElementById("close");
+const shoppingCart = $.getElementById("shopping-cart");
 
 const searchUl = $.querySelector(".autocom-box");
 const searchActiv = $.querySelector(".search-input");
@@ -15,16 +17,6 @@ const searchInput = $.querySelector("input");
 const pantFilter = $.getElementById("pants");
 const shirtFilter = $.getElementById("shirt");
 const allItems = $.getElementById("all");
-// animation Cart And Hover :
-cart.addEventListener("mouseover", () => {
-  cartItems.classList.add("animate-fade-left");
-  cartItems.classList.remove("animate-jump-out");
-  cartItems.classList.remove("hidden");
-});
-divCart.addEventListener("mouseleave", () => {
-  cartItems.classList.add("animate-jump-out");
-  cartItems.classList.remove("animate-fade-left");
-});
 
 // add or remove Item in object
 const product = [
@@ -32,6 +24,7 @@ const product = [
     id: 1,
     name: "Shirt 1",
     price: "11.99",
+    corent: 1,
     img: "../src/img/Ti-Shirt-01.jpg",
     shirt: true,
   },
@@ -39,6 +32,7 @@ const product = [
     id: 2,
     name: "Pants",
     price: "50.99",
+    corent: 1,
     img: "../src/img/pant.webp",
     pant: true,
   },
@@ -46,6 +40,7 @@ const product = [
     id: 3,
     name: "Pants Cargo lash",
     price: "12.5",
+    corent: 1,
     img: "../src/img/pant.jpg",
     pant: true,
   },
@@ -53,6 +48,7 @@ const product = [
     id: 4,
     name: "Shirt 3",
     price: "15.99",
+    corent: 1,
     img: "../src/img/Ti-Shirt-02.avif",
     shirt: true,
   },
@@ -60,6 +56,7 @@ const product = [
     id: 5,
     name: "Shirt polo",
     price: "15.99",
+    corent: 1,
     img: "../src/img/Polo-Shirt.jpeg",
     shirt: true,
   },
@@ -67,6 +64,7 @@ const product = [
     id: 6,
     name: "Jordan pants",
     price: "50.99",
+    corent: 1,
     img: "../src/img/Jordan-pants.webp",
     pant: true,
   },
@@ -74,6 +72,7 @@ const product = [
     id: 7,
     name: "Pants Cargo",
     price: "60",
+    corent: 1,
     img: "../src/img/pants2.webp",
     pant: true,
   },
@@ -81,6 +80,7 @@ const product = [
     id: 8,
     name: "Shirt 4",
     price: "22",
+    corent: 1,
     img: "../src/img/Ti-shirt-03.avif",
     shirt: true,
   },
@@ -144,53 +144,127 @@ function createAllElements() {
 // add product Cart And Total Price
 let cartItem = [];
 function addItemHanler(e) {
-  cartItem.push(product[e - 1]);
-  $.getElementById("btn").classList.remove("hidden");
-  createCartitem();
-  localStorage.setItem("cart", JSON.stringify(cartItem));
-}
-function createCartitem() {
-  itemNumber.innerHTML = cartItem.length;
-  listItemCart.innerHTML = "";
-  cartItem.forEach((e) => {
-    createNewItemCart(e);
+  itemNumber.innerHTML = cartItem.length + 1;
+
+  // is have =>
+  let isHaveProduct = cartItem.find((item) => {
+    return e == item.id;
   });
-  // scroll
-  if (cartItem.length >= 4) {
-    cartItems.classList.add("h-60");
+  if (!isHaveProduct) {
+    cartItem.push(product[e - 1]);
+    createCartitem();
   } else {
-    cartItems.classList.remove("h-60");
+    cartItem.forEach((i) => {
+      if (i.id == e) {
+        i.corent++;
+        createCartitem();
+      }
+    });
   }
 }
-// Create Product Elm
-function createNewItemCart(item) {
-  listItemCart.insertAdjacentHTML(
-    "beforeend",
-    ` <li class="border-gray-400 flex flex-row mb-2">
-  <div
-      class="select-none cursor-pointer bg-gray-200 rounded-md flex flex-1 items-center p-4  transition duration-500 ease-in-out transform hover:-translate-y-1 hover:shadow-lg">
-      <div class="flex flex-col rounded-md w-10 h-10 bg-gray-300 justify-center items-center mr-4 bg-cover bg-center"
-          style="background-image:url(` +
-      item.img +
-      `)">
-      </div>
-      <div class="flex-1 pl-1 mr-16">
-          <div class="font-medium ">` +
-      item.name +
-      `</div>
-          <div class="text-gray-600 text-sm">` +
-      item.price +
-      `</div>
-      </div>
-      <button class="text-white text-xs bg-red-500 p-1 rounded">Delete</button>
-  </div>
-</li>`
-  );
+
+function createCartitem() {
+  // total price
+  let totalResult = 0;
+  cartItem.forEach((product) => {
+    totalResult = (totalResult + +product.price) * product.corent;
+  });
+  totalPrice.innerHTML = totalResult.toFixed(2);
+  cartItems.innerHTML = "";
+  let svg;
+  cartItem.forEach((itemCart) => {
+    if (itemCart.corent >= 2) {
+      svg = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
+    </svg>
+    `;
+    } else {
+      svg = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+    </svg>
+    `;
+    }
+    cartItems.insertAdjacentHTML(
+      "beforeend",
+      `
+    <li class="flex py-6">
+    <div
+        class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+        <img src="` +
+        itemCart.img +
+        `"
+            alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
+            class="h-full w-full object-cover object-center">
+    </div>
+
+    <div class="ml-4 flex flex-1 flex-col">
+        <div>
+            <div
+                class="flex justify-between text-base font-medium text-gray-900">
+                <h3>
+                    <a href="#">` +
+        itemCart.name +
+        `</a>
+                </h3>
+                <p class="ml-4">$<span>` +
+        itemCart.price +
+        `</span></p>
+            </div>
+            <p class="mt-1 text-sm text-gray-500">Salmon</p>
+        </div>
+        <div class="flex flex-1 items-end flex-row-reverse text-sm">
+            <div class="flex gap-2 text-red-500">
+              <button id="dcorent" onclick="dcorent(` +
+        itemCart.corent +
+        `,` +
+        itemCart.id +
+        `)">
+        ` +
+        svg +
+        `
+              </button> ` +
+        itemCart.corent +
+        ` <button onclick="acorent(` +
+        itemCart.id +
+        `)">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-6 ">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              </svg>  
+            <button>
+            </div>
+
+        </div>
+    </div>
+</li>
+    `
+    );
+  });
 }
-// for moments is empty cartElm
-if (listItemCart.innerHTML != "") {
-  listItemCart.innerHTML = "No item ! 😐";
-  $.getElementById("btn").classList.add("hidden");
+
+function dcorent(corent, id) {
+  if (corent == 1) {
+    let deletedItem = cartItem.filter((e) => {
+      return id !== e.id;
+    });
+    cartItem = deletedItem;
+    createCartitem();
+    console.log(deletedItem);
+  } else {
+    cartItem.forEach((e) => {
+      if (e.id == id) {
+        e.corent--;
+      }
+    });
+    createCartitem();
+  }
+}
+function acorent(id) {
+  cartItem.forEach((e) => {
+    if (e.id == id) {
+      e.corent++;
+    }
+  });
+  createCartitem();
 }
 // log my Name
 console.warn("Mr.R00T");
@@ -253,13 +327,7 @@ window.addEventListener("load", () => {
     createAllElements();
   }
 });
-window.addEventListener("load", () => {
-  let geted = JSON.parse(localStorage.getItem("cart"))
-  if(geted){
-    cartItem = geted; 
-    createCartitem(); 
-  }
-});
+
 // show product
 function showDataProduct(e) {
   searchInput.value = "";
@@ -327,3 +395,28 @@ function searchLiGenerator(name) {
     );
   });
 }
+
+closeBtn.addEventListener("click", () => {
+  side.classList.remove("translate-x-0");
+  side.classList.add("translate-x-full");
+  setTimeout(() => {
+    {
+      shoppingCart.classList.remove("opacity-100");
+      shoppingCart.classList.add("opacity-0");
+      shoppingCart.classList.remove("visible");
+      shoppingCart.classList.add("invisible");
+    }
+  }, 100);
+});
+cart.addEventListener("click", () => {
+  side.classList.remove("translate-x-full");
+  side.classList.add("translate-x-0");
+  setTimeout(() => {
+    {
+      shoppingCart.classList.remove("opacity-0");
+      shoppingCart.classList.add("opacity-100");
+      shoppingCart.classList.remove("invisible");
+      shoppingCart.classList.add("visible");
+    }
+  }, 100);
+});

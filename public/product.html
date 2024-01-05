@@ -24,7 +24,7 @@
     Back
   </button>
   <!-- All product -->
-  <section class="container relative  w-full h-screen p-5 flex flex-row-reverse" id="product">
+  <section class="container relative  w-full h-screen p-5 flex flex-col md:flex-row-reverse" id="product">
     <!-- Like Btn -->
     <button class="like-button absolute w-5 h-5 right-8 top-8">
       <div class="like-wrapper">
@@ -44,6 +44,41 @@
         </div>
       </div>
     </button>
+    <div class="rounded-2xl w-full lg:w-3/6 ml-auto h-full bg-cover bg-center animate-fade" id="imgP"></div>
+    <div class="flex flex-col h-full items-center">
+      <div>
+        <h1 class="text-4xl md:text-8xl font-medium font-Rubik animate-wiggle pl-5" id="nameP"></h1>
+        <p class="w-[40rem] text-xl md:text-3xl font-Oswald text-green-950 p-7 ">Lorem ipsum dolor sit amet,
+          consectetur adipisicing
+          elit. Vel, natus
+          dolore earum
+          mollitia iste incidunt debitis placeat? Enim recusandae aliquam labore error, hic dignissimos,
+          blanditiis similique ab amet voluptatem reprehenderit. Lorem ipsum dolor sit amet consectetur,
+          adipisicing elit. Consequatur illo ducimus sit quo dolorum fugit, eligendi eveniet a mollitia error
+          corrupti odio, aliquam qui laboriosam quos. Necessitatibus dolore sint reprehenderit.</p>
+      </div>
+      <div class="flex items-center gap-5 p-6 pb-10 mt-auto ">
+        <p class="text-4xl font-Oswald ">$<span id="priceP"></span></p>
+        <button class=" space-y-20 group">
+          <div class="w-full">
+            <div class="flex-1 h-full w-96 mx-auto">
+              <div class="flex w-full bg-green-400 shadow rounded-lg py-4 px-16">
+                <p class="m-auto inset-0 text-xl font-semibold leading-7 text-center text-white">
+                  Add and Back</p>
+                <div class="group-hover:translate-x-1 transition-transform">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </button>
+      </div>
+    </div>
+    
   </section>
   <script src="../src/js/product.js"></script>
 </body>
