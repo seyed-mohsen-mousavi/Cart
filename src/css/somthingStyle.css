@@ -311,8 +311,7 @@
     opacity: 1;
     pointer-events: auto;
   }
-  .autocom-box li{
-    list-style: none;
+  .autocom-box a{
     padding: 8px 12px;
     display: none;
     width: 100%;
@@ -320,8 +319,7 @@
     border-radius: 3px;
     cursor: pointer;
   }
-  
-  .search-input.active .autocom-box li{
+  .search-input.active .autocom-box  a{
     display: flex;
   }
 

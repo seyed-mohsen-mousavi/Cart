@@ -89,10 +89,8 @@ const product = [
 function createElemntHandler(item) {
   items.insertAdjacentHTML(
     "beforeend",
-    `<div
-      class="container mx-auto p-7 bg-white max-w-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl animate-delay-[` +
-      item.id * 100 +
-      `ms] animate-fade-down">
+    `<div data-wow-duration="`+ item.id * 150+`ms"
+      class="container mx-auto p-7 bg-white max-w-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl wow animate-fade-down">
       <div  class="md:w-72 lg:w-64 xl:w-72 w-50 h-56  md:h-64 lg:h-64 bg-cover bg-center hover:bg-top transition-all rounded-xl mr-auto ml-auto" style="background-image: url(` +
       item.img +
       `)"></div>
@@ -115,17 +113,15 @@ function createElemntHandler(item) {
           <button onclick="addItemHanler(` +
       item.id +
       `)" class="text-white text-sm md:text-md lg:text-md xl:text-md 2xl:text-lg font-semibold bg-green-400 py-1 px-1 md:py-2 md:px-4 xl:py-2 xl:px-4 lg:py-2 lg:px-4 rounded-lg shadow-md hover:shadow-lg transition duration-500 transform-gpu hover:scale-110">Buy Now</button>
-                  <button onclick="showDataProduct(` +
+                  <a href="product.html?id=` +
       item.id +
-      `)" class="text-white text-sm md:text-md lg:text-md xl:text-md 2xl:text-lg font-semibold bg-slate-300 py-1 px-1 md:py-2 md:px-4 xl:py-2 xl:px-4 lg:py-2 lg:px-4 rounded-lg shadow-md hover:shadow-lg transition duration-500 transform-gpu hover:scale-110">Continuation</button>
+      `" class="text-white text-sm md:text-md lg:text-md xl:text-md 2xl:text-lg font-semibold bg-slate-300 py-1 px-1 md:py-2 md:px-4 xl:py-2 xl:px-4 lg:py-2 lg:px-4 rounded-lg shadow-md hover:shadow-lg transition duration-500 transform-gpu hover:scale-110">Continuation</a>
             </div>
           </div>
       </div>
       </div>`
   );
 }
-// Bakcground Image: Body
-$.body.style.backgroundImage = "url(../src/img/pants.webp)";
 
 // function for createAll Elements in click to the All button To html
 function createAllElements() {
@@ -202,7 +198,9 @@ function createCartitem() {
             <div
                 class="flex justify-between text-base font-medium text-gray-900">
                 <h3>
-                    <a href="#">` +
+                    <a href="product.html?id=` +
+        itemCart.id +
+        `">` +
         itemCart.name +
         `</a>
                 </h3>
@@ -328,19 +326,6 @@ window.addEventListener("load", () => {
   }
 });
 
-// show product
-function showDataProduct(e) {
-  searchInput.value = "";
-  let sum = "/E:/Cart/public/product.html?" + "id=" + e;
-  location.href = sum;
-}
-function showCart(e) {
-  if (cartItem.length > 0) {
-    searchInput.value = "";
-    let sum = "/E:/Cart/public/cart.html?" + "id=" + JSON.stringify(cartItem);
-    location.href = sum;
-  }
-}
 
 // Search
 
@@ -368,20 +353,13 @@ searchInput.addEventListener("keyup", (e) => {
     } else {
       searchActiv.classList.remove("active");
     }
-    // if click Enter (Enter Key Code:13) =>
-    if (e.keyCode === 13) {
-      let fristLength = filterSearch[0];
-      showDataProduct(fristLength.id);
-    }
   }
 });
 function searchLiGenerator(name) {
   name.forEach((e) => {
     searchUl.insertAdjacentHTML(
       "beforeend",
-      `                            <li onclick="showDataProduct(` +
-        e.id +
-        `)" class="items-center hover:bg-[#b8b8b85d] transition-all w-full">
+      `                            <a href="product.html?id=`+e.id+`" class="items-center hover:bg-[#b8b8b85d] transition-all w-full">
       <div class="flex flex-col rounded-md w-10 h-10 bg-gray-300 justify-center items-center mr-4 bg-cover bg-center"
           style="background-image:url(` +
         e.img +
@@ -390,7 +368,7 @@ function searchLiGenerator(name) {
       <p class="font-medium  text-white">` +
         e.name +
         `</p>
-  </li>
+  </a>
     `
     );
   });
