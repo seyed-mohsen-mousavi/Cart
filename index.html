@@ -5,18 +5,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Store</title>
-    <link rel="stylesheet" href="./build/tailwind.css" />
-    <link rel="stylesheet" href="../src/css/somthingStyle.css" />
+    <link rel="stylesheet" href="./public/build/tailwind.css" />
+    <link rel="stylesheet" href="src/css/somthingStyle.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Rubik+Doodle+Shadow&display=swap"
         rel="stylesheet">
 </head>
 
-<body class="h-screen scroll-smooth bg-cover bg-center bg-slate-300">
-    <section class="container  pb-5 rounded-b-lg pt-2  ">
+<body class="h-screen scroll-smooth bg-cover bg-center bg-[#171717]">
+    <section class="container  pb-5 rounded-b-lg pt-2 flex flex-col items-center relative">
         <!-- Cart BTN -->
-        <div class="absolute z-50 ">
+        <div class="absolute z-50 left-1">
             <button class="group/cart bg-white p-2 rounded-lg hover:bg-slate-400 transition-colors relative wow animate__rubberBand" id="cart">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" data-slot="icon" class="w-6 h-6 group-hover/cart:text-white">
@@ -28,13 +28,13 @@
             </button>
         </div>
         <!-- Filter Card -->
-        <div class="m-5 ml-14 flex justify-between items-center">
+        <div class="m-5 ml-14 flex justify-between items-center gap-5">
             <h1 class="text-2xl lg:text-3xl text-white font-medium">Products</h1>
             <div class="flex gap-5 items-center">
                 <!-- Search Box -->
                 <div class="flex gap-4 items-center">
                     <div class="relative search-input">
-                        <input class="text-white placeholder:text-white" type="text" placeholder="Type to search...">
+                        <input class="text-black placeholder:text-black" type="text" placeholder="Type to search...">
                         <div class="autocom-box absolute w-full z-50 flex flex-col backdrop-blur-lg rounded-b-xl">
                             <!-- here list are inserted from javascript -->
                         </div>
@@ -59,7 +59,7 @@
             </div>
         </div>
         <!-- products -->
-        <div id="Items" class="grid gap-4 grid-cols-2 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 ">
+        <div id="Items" class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 ">
         </div>
         <!-- shopping cart -->
         <div class="invisible relative z-10 ease-in-out duration-500 opacity-0" aria-labelledby="slide-over-title" role="dialog"
@@ -97,6 +97,7 @@
                                     </div>
                                 </div>
                                 <div class="border-t border-gray-200 px-4 py-6 sm:px-6">
+                                    <!-- sub Total -->
                                     <div class="flex justify-between text-base font-medium text-gray-900">
                                         <p>Subtotal</p>
                                         <p>$<span id="subtotal"></span></p>
@@ -104,7 +105,7 @@
                                     <p class="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.
                                     </p>
                                     <div class="mt-6">
-                                        <a href="cart.html"
+                                        <a href="cart/"
                                             class="flex items-center justify-center rounded-md border border-transparent bg-green-500 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-green-600">Checkout</a>
                                     </div>
                                     <div class="mt-6 flex justify-center text-center text-sm text-gray-500">
@@ -125,11 +126,17 @@
             </div>
         </div>
     </section>
-    <script src="../src/js/script.js"></script>
-    <script src="../node_modules/wow.js/dist/wow.min.js"></script>
+    <script src="src/js/script.js"></script>
+    <script src="node_modules/wow.js/dist/wow.min.js"></script>
     <script>
     new WOW().init();
     </script>
+    <div class="lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+      
 </body>
 
 </html>

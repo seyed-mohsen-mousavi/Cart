@@ -25,7 +25,7 @@ const product = [
     name: "Shirt 1",
     price: "11.99",
     corent: 1,
-    img: "../src/img/Ti-Shirt-01.jpg",
+    img: "src/img/Ti-Shirt-01.jpg",
     shirt: true,
   },
   {
@@ -33,7 +33,7 @@ const product = [
     name: "Pants",
     price: "50.99",
     corent: 1,
-    img: "../src/img/pant.webp",
+    img: "src/img/pant.webp",
     pant: true,
   },
   {
@@ -41,7 +41,7 @@ const product = [
     name: "Pants Cargo lash",
     price: "12.5",
     corent: 1,
-    img: "../src/img/pant.jpg",
+    img: "src/img/pant.jpg",
     pant: true,
   },
   {
@@ -49,7 +49,7 @@ const product = [
     name: "Shirt 3",
     price: "15.99",
     corent: 1,
-    img: "../src/img/Ti-Shirt-02.avif",
+    img: "src/img/Ti-Shirt-02.avif",
     shirt: true,
   },
   {
@@ -57,7 +57,7 @@ const product = [
     name: "Shirt polo",
     price: "15.99",
     corent: 1,
-    img: "../src/img/Polo-Shirt.jpeg",
+    img: "src/img/Polo-Shirt.jpeg",
     shirt: true,
   },
   {
@@ -65,7 +65,7 @@ const product = [
     name: "Jordan pants",
     price: "50.99",
     corent: 1,
-    img: "../src/img/Jordan-pants.webp",
+    img: "src/img/Jordan-pants.webp",
     pant: true,
   },
   {
@@ -73,7 +73,7 @@ const product = [
     name: "Pants Cargo",
     price: "60",
     corent: 1,
-    img: "../src/img/pants2.webp",
+    img: "src/img/pants2.webp",
     pant: true,
   },
   {
@@ -81,7 +81,7 @@ const product = [
     name: "Shirt 4",
     price: "22",
     corent: 1,
-    img: "../src/img/Ti-shirt-03.avif",
+    img: "src/img/Ti-shirt-03.avif",
     shirt: true,
   },
 ];
@@ -89,7 +89,9 @@ const product = [
 function createElemntHandler(item) {
   items.insertAdjacentHTML(
     "beforeend",
-    `<div data-wow-duration="`+ item.id * 150+`ms"
+    `<div data-wow-duration="` +
+      item.id * 150 +
+      `ms"
       class="container mx-auto p-7 bg-white max-w-sm rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl wow animate-fade-down">
       <div  class="md:w-72 lg:w-64 xl:w-72 w-50 h-56  md:h-64 lg:h-64 bg-cover bg-center hover:bg-top transition-all rounded-xl mr-auto ml-auto" style="background-image: url(` +
       item.img +
@@ -113,7 +115,7 @@ function createElemntHandler(item) {
           <button onclick="addItemHanler(` +
       item.id +
       `)" class="text-white text-sm md:text-md lg:text-md xl:text-md 2xl:text-lg font-semibold bg-green-400 py-1 px-1 md:py-2 md:px-4 xl:py-2 xl:px-4 lg:py-2 lg:px-4 rounded-lg shadow-md hover:shadow-lg transition duration-500 transform-gpu hover:scale-110">Buy Now</button>
-                  <a href="product.html?id=` +
+                  <a href="product/?id=` +
       item.id +
       `" class="text-white text-sm md:text-md lg:text-md xl:text-md 2xl:text-lg font-semibold bg-slate-300 py-1 px-1 md:py-2 md:px-4 xl:py-2 xl:px-4 lg:py-2 lg:px-4 rounded-lg shadow-md hover:shadow-lg transition duration-500 transform-gpu hover:scale-110">Continuation</a>
             </div>
@@ -140,7 +142,6 @@ function createAllElements() {
 // add product Cart And Total Price
 let cartItem = [];
 function addItemHanler(e) {
-  itemNumber.innerHTML = cartItem.length + 1;
 
   // is have =>
   let isHaveProduct = cartItem.find((item) => {
@@ -160,6 +161,7 @@ function addItemHanler(e) {
 }
 
 function createCartitem() {
+  itemNumber.innerHTML = cartItem.length;
   // total price
   let totalResult = 0;
   cartItem.forEach((product) => {
@@ -198,7 +200,7 @@ function createCartitem() {
             <div
                 class="flex justify-between text-base font-medium text-gray-900">
                 <h3>
-                    <a href="product.html?id=` +
+                    <a href="product/?id=` +
         itemCart.id +
         `">` +
         itemCart.name +
@@ -326,7 +328,6 @@ window.addEventListener("load", () => {
   }
 });
 
-
 // Search
 
 let searchInputValue;
@@ -359,7 +360,9 @@ function searchLiGenerator(name) {
   name.forEach((e) => {
     searchUl.insertAdjacentHTML(
       "beforeend",
-      `                            <a href="product.html?id=`+e.id+`" class="items-center hover:bg-[#b8b8b85d] transition-all w-full">
+      `                            <a href="product/?id=` +
+        e.id +
+        `" class="items-center hover:bg-[#b8b8b85d] transition-all w-full">
       <div class="flex flex-col rounded-md w-10 h-10 bg-gray-300 justify-center items-center mr-4 bg-cover bg-center"
           style="background-image:url(` +
         e.img +
