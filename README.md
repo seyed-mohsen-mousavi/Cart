@@ -7,7 +7,6 @@ if You Liked Please Fallow my github Page❤️<br>
 
 <br>
 
-*شرمنده وقت نشد قسمت  Continuation  رو ریسپانیو کنم*
 
 
 ## Preview

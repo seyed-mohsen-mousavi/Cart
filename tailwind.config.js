@@ -7,7 +7,8 @@ module.exports = {
       padding: "1rem",
     }, fontFamily: {
       'Rubik': ['Rubik Doodle Shadow'],
-      'Oswald': ['Oswald']
+      'Oswald': ['Oswald'],
+     'Poppins':['Poppins']
     },
     extend: {},
   },

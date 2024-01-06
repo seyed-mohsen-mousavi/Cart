@@ -9,15 +9,17 @@
     <link rel="stylesheet" href="src/css/somthingStyle.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Rubik+Doodle+Shadow&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 
-<body class="h-screen scroll-smooth bg-cover bg-center bg-[#171717]">
+<body class="h-screen scroll-smooth bg-cover bg-center bg-[#171717] font-Poppins">
     <section class="container  pb-5 rounded-b-lg pt-2 flex flex-col items-center relative">
         <!-- Cart BTN -->
         <div class="absolute z-50 left-1">
-            <button class="group/cart bg-white p-2 rounded-lg hover:bg-slate-400 transition-colors relative wow animate__rubberBand" id="cart">
+            <button
+                class="group/cart bg-white p-2 rounded-lg hover:bg-slate-400 transition-colors relative wow animate__rubberBand"
+                id="cart">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" data-slot="icon" class="w-6 h-6 group-hover/cart:text-white">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -28,17 +30,18 @@
             </button>
         </div>
         <!-- Filter Card -->
-        <div class="m-5 ml-14 flex justify-between items-center gap-5">
+        <div class="m-5 ml-28 flex justify-between items-center gap-5 w-full">
             <h1 class="text-2xl lg:text-3xl text-white font-medium">Products</h1>
             <div class="flex gap-5 items-center">
                 <!-- Search Box -->
                 <div class="flex gap-4 items-center">
                     <div class="relative search-input">
-                        <input class="text-black placeholder:text-black" type="text" placeholder="Type to search...">
+                        <input class="text-black placeholder:text-black " type="text"
+                            placeholder="Type to search...">
                         <div class="autocom-box absolute w-full z-50 flex flex-col backdrop-blur-lg rounded-b-xl">
                             <!-- here list are inserted from javascript -->
                         </div>
-                        <div class="absolute right-3 top-4 text-white">
+                        <div class="absolute right-3 top-4 text-black">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -62,8 +65,8 @@
         <div id="Items" class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 ">
         </div>
         <!-- shopping cart -->
-        <div class="invisible relative z-10 ease-in-out duration-500 opacity-0" aria-labelledby="slide-over-title" role="dialog"
-            aria-modal="true" id="shopping-cart">
+        <div class="invisible relative z-10 ease-in-out duration-500 opacity-0" aria-labelledby="slide-over-title"
+            role="dialog" aria-modal="true" id="shopping-cart">
             <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
             <div class="fixed inset-0 overflow-hidden " id="sideRoot">
                 <div class="absolute inset-0 overflow-hidden">
@@ -129,14 +132,14 @@
     <script src="src/js/script.js"></script>
     <script src="node_modules/wow.js/dist/wow.min.js"></script>
     <script>
-    new WOW().init();
+        new WOW().init();
     </script>
     <div class="lines">
         <div class="line"></div>
         <div class="line"></div>
         <div class="line"></div>
-      </div>
-      
+    </div>
+
 </body>
 
 </html>
