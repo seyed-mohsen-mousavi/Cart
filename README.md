@@ -7,7 +7,18 @@ if You Liked Please Fallow my github Page❤️<br>
 
 <br>
 
+##run
 
+### Installation
+- NPM
+
+```bash
+   npm install
+```
+
+## Demo 
+
+<a href="https://root-store.liara.run/">Store ❤️</a>
 
 ## Preview
 <img src="./src/img/shot website.png">
@@ -21,3 +32,5 @@ if You Liked Please Fallow my github Page❤️<br>
 
 >Beautifullllllllll
 <!-- Mr.root For Ever 😁 -->
+
+*The Cart page Comming Soon*
