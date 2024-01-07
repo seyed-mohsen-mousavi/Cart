@@ -7,7 +7,6 @@ if You Liked Please Fallow my github Page❤️<br>
 
 <br>
 
-##run
 
 ### Installation
 - NPM
