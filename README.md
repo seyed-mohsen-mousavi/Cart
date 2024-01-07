@@ -32,4 +32,4 @@ if You Liked Please Fallow my github Page❤️<br>
 >Beautifullllllllll
 <!-- Mr.root For Ever 😁 -->
 
-*The Cart page Comming Soon*
+*The Cart page Comming Soon ...*
